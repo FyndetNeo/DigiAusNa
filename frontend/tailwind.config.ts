@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+import { cssToPlugin } from "./src/utils/tailwind/cssToPlugin"
 import { screens } from "./tailwind.screen"
 
 /** @type {import('tailwindcss').Config} */
@@ -7,5 +9,8 @@ export default {
     screens: screens,
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    cssToPlugin("./styles/utils.css"),
+    cssToPlugin("./styles/typography.css"),
+  ],
 }

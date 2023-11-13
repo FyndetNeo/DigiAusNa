@@ -2,3 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* Don't add anything here, either use component css or files inside styles */
