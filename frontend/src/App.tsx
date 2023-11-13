@@ -1,4 +1,4 @@
-import "./App.css"; // Assuming you have an App.css file for additional styles
+import "./App.css" // Assuming you have an App.css file for additional styles
 
 const App = () => {
   return (
@@ -89,7 +89,7 @@ const App = () => {
         </div>
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

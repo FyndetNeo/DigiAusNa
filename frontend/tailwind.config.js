@@ -1,4 +1,4 @@
-import { screens } from "./tailwind.screen";
+import { screens } from "./tailwind.screen"
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -8,4 +8,4 @@ export default {
     extend: {},
   },
   plugins: [],
-};
+}
