@@ -9,7 +9,7 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: example
-      POSTGRESS_USER: postgress
+      POSTGRES_USER: postgres
     ports:
       - '5432:5432'
     volumes:
