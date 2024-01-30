@@ -7,6 +7,7 @@ import cors from 'cors'
 
 //IMPORT ROUTES
 import {router as indexRouter} from './routes/index'
+import {router as nachweisRouter} from './routes/nachweise'
 
 //EXPORT
 export const app = express();
@@ -25,11 +26,14 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use('/', indexRouter);
+app.use('/nachweis', indexRouter);
 
 const port = normalizePort(process.env.PORT);
 app.set('port', port);
 const server = http.createServer(app);
-server.listen(port);
+server.listen(port,  () => {
+    console.log('Server running on ' + 'http://localhost:' + port + '/')
+})
 server.on('error', onError);
 
 function normalizePort(val: any) {
