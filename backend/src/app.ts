@@ -1,3 +1,5 @@
+import {Config} from '../src/functions/config/appconfig'
+export const APPCONFIG: Config = new Config()
 //IMPORT NPMS
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
@@ -7,13 +9,14 @@ import cors from 'cors'
 
 //IMPORT ROUTES
 import {router as indexRouter} from './routes/index'
-import {router as nachweisRouter} from './routes/nachweise'
+import {router as usersRouter} from './routes/users'
+import {router as reportsRouter} from './routes/reports'
 import {initDB} from './functions/db/initDB'
 
 //EXPORT
 export const app = express();
 
-// SETUP
+
 process.env.PORT = '3000'
 
 const corsOptions = {
@@ -27,7 +30,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use('/', indexRouter);
-app.use('/nachweis', nachweisRouter);
+app.use('/users', usersRouter);
+app.use('/reports', reportsRouter)
 
 const port = normalizePort(process.env.PORT);
 app.set('port', port);

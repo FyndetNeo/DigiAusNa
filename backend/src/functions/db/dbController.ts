@@ -1,11 +1,12 @@
 import {Client, QueryConfig} from 'pg'
-const client = new Client(
+import {APPCONFIG} from '../../app'
+const client: Client = new Client(
     {
-        user: 'postgres',
-        host: 'localhost',
-        database: 'postgres',
-        password: 'example',
-        port: 5432
+        user: APPCONFIG.PGUSER,
+        host: APPCONFIG.PGHOST,
+        database: APPCONFIG.PGDATABASE,
+        password: APPCONFIG.PGPASSWORD,
+        port: Number(APPCONFIG.PGPORT)
     }
 )
 
@@ -16,17 +17,17 @@ export async function dbController(queryTextOrConfig: string | QueryConfig<any[]
             try {
                 if (values) {
                     const res = await client.query(queryTextOrConfig, values)
-                    resolve(res)
                     //resolve(res.rows[0].message)
+                    await client.end()
+                    resolve(res)
                 } else {
                     const res = await client.query(queryTextOrConfig)
+                    await client.end()
                     resolve(res)
                 }
             } catch (err) {
+                await client.end()
                 reject(err);
-                await client.end()
-            } finally {
-                await client.end()
             }
         })
             .catch((err)=>{
